@@ -3,6 +3,7 @@ from doctor.models import Doctor
 
 class CampaignModel(models.Model):
     name = models.CharField(max_length=50)
+    image = models.TextField(null=True, blank=True)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
