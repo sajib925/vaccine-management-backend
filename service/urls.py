@@ -2,5 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.ServiceListCreateApiView.as_view(), name='service-list-create'),
+    path('', views.ServiceAPIView.as_view(), name='service-list-create'),
 ]
+
+
+

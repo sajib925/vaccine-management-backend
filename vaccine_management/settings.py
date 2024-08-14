@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 import dj_database_url
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 CORS_ALLOW_ALL_ORIGINS = True
@@ -127,6 +128,9 @@ DATABASES = {
         default='postgresql://vaccine_management_db_f3zz_user:pfKPG6WQrY93KaZvusxC155WAMUcNhjq@dpg-cqtnmp2j1k6c738q3dp0-a.oregon-postgres.render.com/vaccine_management_db_f3zz',
     )
 }
+
+
+
 
 
 
