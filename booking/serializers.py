@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from datetime import timedelta
 from .models import BookingModel
-from django.contrib.auth.models import User
+
 
 class BookingModelSerializer(serializers.ModelSerializer):
     # These fields are fetched from the related User model via the Patient model
@@ -25,3 +25,20 @@ class BookingModelSerializer(serializers.ModelSerializer):
         booking.second_dose_date = booking.first_dose_date + timedelta(days=28)
         booking.save()
         return booking
+
+
+class BookingModelUpdateSerializer(serializers.ModelSerializer):
+    # These fields are fetched from the related User model via the Patient model
+    patient_id = serializers.ReadOnlyField(source='patient.user.id')
+    campaign_name = serializers.ReadOnlyField(source='campaign.name')
+    vaccine_name = serializers.ReadOnlyField(source='vaccine.name')
+
+    class Meta:
+        model = BookingModel
+        fields = [
+            'id', 'patient_id', 'campaign_name',  'vaccine_name', 'first_dose_date', 'second_dose_date',
+        ]
+
+
+
+

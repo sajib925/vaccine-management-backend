@@ -6,8 +6,7 @@ from .models import CampaignModel, VaccinesModel
 from .serializers import CampaignModelSerializer, VaccinesModelSerializer
 from rest_framework.permissions import IsAuthenticated
 
-class CampaignList(APIView):  
-    permission_classes = [IsAuthenticated]
+class CampaignList(APIView):
 
     def get(self, request, format=None):
         campaigns = CampaignModel.objects.all()
