@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from . import models
-
+from django.utils.translation import gettext_lazy as _
 
 class PatientSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
@@ -39,10 +39,36 @@ class RegistrationSerializer(serializers.ModelSerializer):
         return user
 
 
+# class UserLoginSerializer(serializers.Serializer):
+#     username = serializers.CharField(required=True)
+#     password = serializers.CharField(required=True, write_only=True)
 class UserLoginSerializer(serializers.Serializer):
     username = serializers.CharField(required=True)
     password = serializers.CharField(required=True, write_only=True)
 
+    def validate_username(self, value):
+        if not User.objects.filter(username=value).exists():
+            raise serializers.ValidationError(_("The username you entered does not exist."))
+        return value
+
+    def validate_password(self, value):
+        if len(value) < 8:
+            raise serializers.ValidationError(_("Password must be at least 8 characters long."))
+        return value
+
+    def validate(self, data):
+        username = data.get('username')
+        password = data.get('password')
+
+        user = User.objects.filter(username=username).first()
+
+        if user and not user.check_password(password):
+            raise serializers.ValidationError({"password": _("Invalid password. Please try again.")})
+
+        if user is None:
+            raise serializers.ValidationError({"username": _("The username you entered does not exist.")})
+
+        return data
 
 
 class ProfileUpdateSerializer(serializers.ModelSerializer):
