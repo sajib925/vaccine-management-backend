@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'review'
 ]
 CSRF_TRUSTED_ORIGINS = [
-    'https://vaccine-management-backend-7qp2.onrender.com',
+    'https://vaccine-management-backend-j2ii.onrender.com',
     'http://127.0.0.1:8000',
     'http://localhost:8000',
 ]
@@ -61,12 +61,12 @@ CSRF_TRUSTED_ORIGINS = [
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
     "http://localhost:8000",
-    "https://vaccine-management-backend-7qp2.onrender.com",
+    "https://vaccine-management-backend-j2ii.onrender.com",
 ]
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
     "http://localhost:8000",
-    "https://vaccine-management-backend-7qp2.onrender.com",
+    "https://vaccine-management-backend-j2ii.onrender.com",
 ]
 
 
