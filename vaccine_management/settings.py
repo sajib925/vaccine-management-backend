@@ -115,19 +115,19 @@ REST_FRAMEWORK = {
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-# Replace the SQLite DATABASES configuration with PostgreSQL:
 DATABASES = {
-    'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default='postgresql://vaccine_management_db_f3zz_user:pfKPG6WQrY93KaZvusxC155WAMUcNhjq@dpg-cqtnmp2j1k6c738q3dp0-a.oregon-postgres.render.com/vaccine_management_db_f3zz',
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+# Replace the SQLite DATABASES configuration with PostgreSQL:
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         # Replace this value with your local database's connection string.
+#         default='postgresql://vaccine_management_db_f3zz_user:pfKPG6WQrY93KaZvusxC155WAMUcNhjq@dpg-cqtnmp2j1k6c738q3dp0-a.oregon-postgres.render.com/vaccine_management_db_f3zz',
+#     )
+# }
 
 
 
